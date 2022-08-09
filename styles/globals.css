@@ -1,26 +1,180 @@
-html,
 body {
-  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-* {
-  box-sizing: border-box;
+:root {
+  font-size: 15px
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+body::-webkit-scrollbar {
+  width: 0.5rem
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsla(221, 100%, 92%, 0.25);
+}
+
+.comments-container {
+  position: relative;
+  height: 90%;
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.comments {
+  height: 75%;
+  width: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 17px;
+  box-sizing: content-box;
+  margin-bottom: 20px;
+}
+
+.add-comment {
+  height: 150px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.comment {
+  width: 90%;
+  padding: 10px;
+  border-radius: 5px;
+  background: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin: 10px;
+  margin-left: 0;
+  position: relative;
+}
+
+.up-arrow {
+  position: absolute;
+  display: flex;
+  top: 30%;
+  left: 2.5%;
+  cursor: pointer;
+}
+
+.up-arrow :nth-child(1) {
+  margin-right: 5px;
+}
+
+.down-arrow {
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 2.5%;
+  cursor: pointer;
+}
+
+.down-arrow :nth-child(1) {
+  margin-right: 5px;
+}
+
+.comment :nth-child(3) {
+  margin-left: 75px;
+}
+
+.comment :nth-child(4) {
+  margin-left: 75px;
+}
+
+.comment :nth-child(5) {
+  margin-left: 75px;
+}
+
+#title {
+  border-radius: 5px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 50%;
+  border: none;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.submit-btn {
+  width: 200px;
+  height: 50px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.start {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btns-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btns-container button {
+  width: 200px;
+  height: 30px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form h1 {
+  text-align: center;
+}
+
+.form input {
+  margin-bottom: 10px;
+  width: 500px;
+  height: 30px;
+}
+
+.form button {
+  width: 25%;
+  text-align: center;
+}
+
+.btn {
+  height: 30px;
+  width: 100px;
+  border: none;
+  border-radius: 5px
 }
