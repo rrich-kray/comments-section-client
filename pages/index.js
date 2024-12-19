@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Start from "../components/Start/Start";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      setUser(jwt_decode(localStorage.getItem("token")).data);
+      setUser(jwtDecode(localStorage.getItem("token")).data);
       setFormState({
         ...formState,
         user_id: user.id,
