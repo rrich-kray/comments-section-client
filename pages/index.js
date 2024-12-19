@@ -75,7 +75,7 @@ export default function Home() {
         comment_id: commentId,
       }), 
     })
-      .then((response) => {
+      .then(() => {
         window.location.replace("/");
       })
       .catch((err) => {
