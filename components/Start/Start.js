@@ -21,7 +21,6 @@ const Start = ({ baseUrl }) => {
     });
   };
 
-  console.log(baseUrl);
   const submitLogin = (e) => {
     e.preventDefault();
     fetch(`${baseUrl}/interactive-comments-section/api/login`, {
@@ -38,7 +37,7 @@ const Start = ({ baseUrl }) => {
         }
       })
       .then((data) => {
-        context.login(data); // this sets the context properly, but token is not being saved to local storage, so user state is changed to null upon page refresh
+        context.login(data);
         window.location.reload();
       })
       .catch((err) => {
