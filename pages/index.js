@@ -76,7 +76,6 @@ export default function Home() {
       }), 
     })
       .then((response) => {
-        console.log(response);
         window.location.replace("/");
       })
       .catch((err) => {
