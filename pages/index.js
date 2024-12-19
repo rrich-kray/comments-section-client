@@ -11,22 +11,14 @@ import { AuthContext } from "../contexts/AuthContext";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 
-// Fix context. Use token - DONE
-// React trying to loop over comments despite no comments in array.
-// Now there's a sequelize foreign constraint error - because formState.user_id is null.
-
 export default function Home() {
+  const [ isSubmitButtonHidden, setIsSubmitButtonHidden ] = useState(false);
   const [user, setUser] = useState("");
   const [comments, setComments] = useState([]);
   const [formState, setFormState] = useState({
     title: "",
     content: "",
   });
-
-  console.log(user);
-  console.log(user.id);
-  console.log(comments);
-  console.log(formState.user_id); // This is not updated on component render.
 
   // const baseUrl =
   //   process.env.NODE_ENV === "production"
@@ -62,11 +54,13 @@ export default function Home() {
   };
 
   const submitComment = () => {
+    setIsSubmitButtonHidden(true);
     axios.post(`${baseUrl}/interactive-comments-section/api/comments`, {
       title: formState.title,
       content: formState.content,
       user_id: user.id,
     });
+    setTimeout(() => window.location.reload(), 500);
   };
 
   const vote = (commentId, actionType, upvoteUri, downvoteUri) => {
@@ -79,15 +73,15 @@ export default function Home() {
       body: JSON.stringify({
         user_id: user.id,
         comment_id: commentId,
-      }),
+      }), 
     })
       .then((response) => {
         console.log(response);
+        window.location.replace("/");
       })
       .catch((err) => {
         console.error("Error", err);
       });
-    window.location.replace("/");
   };
 
   const logout = () => {
@@ -101,7 +95,7 @@ export default function Home() {
       <div className="app">
         <div className="comments-container">
           <div className="comments">
-            {comments !== [] &&
+            {comments.length !== 0 &&
               comments.map((comment) => (
                 <div className="comment" key={comment.id}>
                   <div
@@ -139,12 +133,12 @@ export default function Home() {
               ))}
           </div>
           <div className="add-comment-container"></div>
-          <form>
+          <form className="comment-form">
             <input
               name="title"
               id="title"
               onChange={handleChange}
-              placeholder="Comment Title"
+              placeholder="Enter comment title here"
             ></input>
             <input
               className="add-comment"
@@ -153,9 +147,12 @@ export default function Home() {
               placeholder="Enter comment here"
               onChange={handleChange}
             ></input>
-            <button className="submit-btn" onClick={submitComment}>
-              Submit!
-            </button>
+            {
+              isSubmitButtonHidden === false &&
+              <button className="submit-btn" onClick={submitComment}>
+                Submit!
+              </button>
+            }
           </form>
           <button className="logout-btn" onClick={logout}>
             Logout

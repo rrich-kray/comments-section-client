@@ -23,7 +23,7 @@ const Start = ({ baseUrl }) => {
 
   console.log(baseUrl);
   const submitLogin = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     fetch(`${baseUrl}/interactive-comments-section/api/login`, {
       method: "POST",
       headers: {
@@ -38,9 +38,8 @@ const Start = ({ baseUrl }) => {
         }
       })
       .then((data) => {
-        console.log(data);
         context.login(data); // this sets the context properly, but token is not being saved to local storage, so user state is changed to null upon page refresh
-        console.log(context);
+        window.location.reload();
       })
       .catch((err) => {
         console.error("Error", err);
@@ -63,8 +62,8 @@ const Start = ({ baseUrl }) => {
         }
       })
       .then((data) => {
-        console.log(data);
         context.login(data);
+        window.location.reload();
       })
       .catch((err) => {
         console.error("Error", err);
@@ -114,7 +113,7 @@ const Start = ({ baseUrl }) => {
       );
     } else if (pageState === "register") {
       return (
-        <>
+        <div className="register-form-container">
           <form className="register-form form">
             <h1>Register</h1>
             <input
@@ -145,7 +144,7 @@ const Start = ({ baseUrl }) => {
           <button className="btn" onClick={submitRegister}>
             Submit!
           </button>
-        </>
+        </div>
       );
     }
   };

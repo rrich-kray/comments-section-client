@@ -28,6 +28,10 @@
   flex-grow: 1;
 }
 
+.comment-form {
+  padding: 10px;
+}
+
 .title a {
   color: #0070f3;
   text-decoration: none;
