@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-
-// Register request is failing, so user state remains null.
 
 const Start = ({ baseUrl }) => {
   const context = useContext(AuthContext);

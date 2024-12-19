@@ -1,5 +1,4 @@
 import React, { useReducer, createContext } from "react";
-import decode from "jwt-decode";
 
 const initialState = {
   user: null,

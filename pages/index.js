@@ -1,13 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import React, { useEffect, useState } from "react";
 import Start from "../components/Start/Start";
-import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
-import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
-import { AuthContext } from "../contexts/AuthContext";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 
@@ -169,7 +163,7 @@ export default function Home() {
           border-radius: 5px;
           border: none;
           font-size: 1rem;
-          font-weight: bold;
+          font-weight: bold;  
           cursor: pointer;
           transition: 0.25s;
           box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
